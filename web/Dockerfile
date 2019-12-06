@@ -15,7 +15,7 @@ ADD nginx-1.8.0.tar.gz /usr/local/
 ADD epel-release-7-12.noarch.rpm /usr/local/  
 
 #RUN 执行以下命令 
-RUN rpm -ivh /usr/local/epel-release-latest-7.noarch.rpm
+RUN rpm -ivh /usr/local/epel-release-7-12.noarch.rpm
 RUN yum install -y wget lftp gcc gcc-c++ make openssl-devel pcre-devel pcre && yum clean all
 RUN useradd -s /sbin/nologin -M www
 
