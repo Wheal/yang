@@ -12,7 +12,7 @@ ENV PATH /usr/local/nginx/sbin:$PATH
 
 #ADD  文件放在当前目录下，拷过去会自动解压
 ADD nginx-1.8.0.tar.gz /usr/local/  
-ADD epel-release-latest-7.noarch.rpm /usr/local/  
+ADD epel-release-7-12.noarch.rpm /usr/local/  
 
 #RUN 执行以下命令 
 RUN rpm -ivh /usr/local/epel-release-latest-7.noarch.rpm
