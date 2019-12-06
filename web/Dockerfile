@@ -1,33 +1,38 @@
 # This my first nginx Dockerfile
 # Version 1.0
 
-# Base images 基础镜像
-FROM centos
+FROM busybox
 
-#MAINTAINER 维护者信息
-MAINTAINER tianfeiyu 
+RUN mkdir -p /data/html && echo "busybox v1" >> /data/html/index.html
+CMD ["http","-f","-h","/data/html"]
 
-#ENV 设置环境变量
-ENV PATH /usr/local/nginx/sbin:$PATH
+# # Base images 基础镜像
+# #FROM centos
 
-#ADD  文件放在当前目录下，拷过去会自动解压
-ADD nginx-1.8.0.tar.gz /usr/local/  
-ADD epel-release-7-12.noarch.rpm /usr/local/  
+# #MAINTAINER 维护者信息
+# #MAINTAINER tianfeiyu 
 
-#RUN 执行以下命令 
-RUN rpm -ivh /usr/local/epel-release-7-12.noarch.rpm
-RUN yum install -y wget lftp gcc gcc-c++ make openssl-devel pcre-devel pcre && yum clean all
-RUN useradd -s /sbin/nologin -M www
+# #ENV 设置环境变量
+# #ENV PATH /usr/local/nginx/sbin:$PATH
 
-#WORKDIR 相当于cd
-WORKDIR /usr/local/nginx-1.8.0 
+# #ADD  文件放在当前目录下，拷过去会自动解压
+# ADD nginx-1.8.0.tar.gz /usr/local/  
+# ADD epel-release-7-12.noarch.rpm /usr/local/  
 
-RUN ./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_ssl_module --with-pcre && make && make install
+# #RUN 执行以下命令 
+# RUN rpm -ivh /usr/local/epel-release-7-12.noarch.rpm
+# RUN yum install -y wget lftp gcc gcc-c++ make openssl-devel pcre-devel pcre && yum clean all
+# RUN useradd -s /sbin/nologin -M www
 
-RUN echo "daemon off;" >> /etc/nginx.conf
+# #WORKDIR 相当于cd
+# WORKDIR /usr/local/nginx-1.8.0 
 
-#EXPOSE 映射端口
-EXPOSE 80
+# RUN ./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_ssl_module --with-pcre && make && make install
 
-#CMD 运行以下命令
-CMD ["nginx"]
+# RUN echo "daemon off;" >> /etc/nginx.conf
+
+# #EXPOSE 映射端口
+# EXPOSE 80
+
+# #CMD 运行以下命令
+# CMD ["nginx"]
