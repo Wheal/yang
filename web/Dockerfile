@@ -4,7 +4,7 @@
 FROM busybox
 
 RUN mkdir -p /data/html && echo "busybox v1" >> /data/html/index.html
-CMD ["http","-f","-h","/data/html"]
+CMD ["/bin/httpd","-f","-h","/data/html"]
 
 # # Base images 基础镜像
 # #FROM centos
