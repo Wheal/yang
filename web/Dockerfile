@@ -3,7 +3,7 @@
 
 FROM busybox
 
-RUN mkdir -p /data/html && echo "busybox v2" >> /data/html/index.html
+RUN mkdir -p /data/html && echo "busybox v3" >> /data/html/index.html
 CMD ["/bin/httpd","-f","-h","/data/html"]
 
 # # Base images 基础镜像
